@@ -2,12 +2,13 @@ package com.mohamed.gamal.weather.view.ui.weather.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.view.View
+import com.mohamed.gamal.presentation2.base.Resource
+import com.mohamed.gamal.presentation2.viewmodel.WeatherViewModel
 import com.mohamed.gamal.weather.R
-import com.mohamed.gamal.weather.presentation.viewmodel.WeatherViewModel
 import com.mohamed.gamal.weather.view.utils.debug
 import kotlinx.android.synthetic.main.activity_main.*
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class WeatherActivity : AppCompatActivity() {
 
@@ -18,10 +19,29 @@ class WeatherActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         viewModel.getWeather()
-        viewModel.observeOnAlbums(this, { weatherResponse ->
-            cityName.text = weatherResponse.name
-            weatherDesc.text = weatherResponse.weather[0].description
-            debug(weatherResponse.weather[0].description)
+        observeOnWeather()
+    }
+
+    private fun observeOnWeather() {
+        viewModel.observeOnWeather(this, { weatherResource ->
+            when (weatherResource.state) {
+                Resource.Companion.State.LOADING -> {
+                    progress.visibility = View.VISIBLE
+                    errorText.visibility = View.GONE
+                }
+                Resource.Companion.State.SUCCESS -> {
+                    progress.visibility = View.GONE
+                    errorText.visibility = View.GONE
+                    cityName.text = weatherResource.value?.name
+                    weatherDesc.text = weatherResource.value?.weather?.get(0)?.description
+                }
+                Resource.Companion.State.ERROR -> {
+                    progress.visibility = View.GONE
+                    errorText.visibility = View.VISIBLE
+                    debug(weatherResource.t.toString())
+                }
+            }
+
         })
     }
 

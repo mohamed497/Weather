@@ -1,8 +1,10 @@
 package com.mohamed.gamal.weather.view.application
 
 import android.app.Application
-import com.mohamed.gamal.weather.presentation.di.*
-import com.mohamed.gamal.weather.remote.di.networkKoinModule
+import com.mohamed.gamal.data.di.dataModule
+import com.mohamed.gamal.domain.di.domainModule
+import com.mohamed.gamal.presentation2.di.presentationModule
+import com.mohamed.gamal.remote.di.remoteModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -18,15 +20,10 @@ class WeatherApp : Application() {
             androidContext(this@WeatherApp)
             modules(
                 listOf(
-                    viewModelModule,
-                    useCaseModule,
-                    repositoryModule,
-                    networkKoinModule,
-                    weatherRepositoryImplModule,
-                    weatherDataSourceFactory,
-                    weatherRemoteDataStore,
-                    weatherRemoteImpl
-
+                    presentationModule,
+                    domainModule,
+                    dataModule,
+                    remoteModule
                 )
             )
         }

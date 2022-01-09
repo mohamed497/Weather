@@ -35,6 +35,11 @@ android {
 
 dependencies {
 
+    implementation project(':Domain')
+    implementation project(':Data')
+    implementation project(':Remote')
+    implementation project(':Presentation2')
+
     implementation supportDependencies.coreKtx
     implementation supportDependencies.junit
     implementation supportDependencies.material
@@ -43,16 +48,13 @@ dependencies {
     testImplementation supportDependencies.junit
     androidTestImplementation supportDependencies.testJunit
     androidTestImplementation supportDependencies.espressoCore
-//
-//    implementation supportDependencies.roomRuntime
-//    annotationProcessor supportDependencies.roomCompiler
-//    kapt supportDependencies.roomKapt
-//    implementation supportDependencies.roomKtx
 
-    implementation supportDependencies.koinAndroid
-    implementation supportDependencies.koinScope
-    implementation supportDependencies.koinViewmodel
-    implementation supportDependencies.koinExt
+//    implementation supportDependencies.koinAndroid
+//    implementation supportDependencies.koinScope
+//    implementation supportDependencies.koinViewmodel
+//    implementation supportDependencies.koinExt
+
+    implementation "io.insert-koin:koin-android:3.1.5"
 
     implementation supportDependencies.retrofit
     implementation supportDependencies.retrofitAdapter
