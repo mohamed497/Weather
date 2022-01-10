@@ -24,7 +24,6 @@ val remoteModule = module {
     }
     factory { WeatherResponseModelMapper(get()) }
     factory { WeatherModelMapper() }
-//    single<WeatherRepository> { WeatherRemoteRepository(weatherService = get()) }
 
     single<WeatherRemote> { WeatherRemoteImpl(weatherService = get(), weatherMapper = get()) }
 

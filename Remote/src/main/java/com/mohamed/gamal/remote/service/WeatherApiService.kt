@@ -11,7 +11,6 @@ const val URL = "2.5/weather?q=London&appid="
 interface WeatherApiService {
 
     @GET("${URL}${API_KEY}")
-//    fun getWeather(): Observable<WeatherResponse>
     fun getWeather(): Observable<WeatherResponseModel>
 
 }

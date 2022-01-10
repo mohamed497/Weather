@@ -7,9 +7,7 @@ import com.mohamed.gamal.domain.models.WeatherResponse
 import io.reactivex.rxjava3.core.Observable
 
 class WeatherRemoteDataStore(private val weatherRemote: WeatherRemote) : WeatherDataStore {
-//    override fun getWeather(): Observable<WeatherResponse> {
-//        return weatherRemote.getWeather()
-//    }
+
     override fun getWeather(): Observable<WeatherResponseEntity> {
         return weatherRemote.getWeather()
     }

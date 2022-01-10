@@ -6,6 +6,5 @@ import io.reactivex.rxjava3.core.Observable
 
 interface WeatherDataStore {
 
-//    fun getWeather(): Observable<WeatherResponse>
     fun getWeather(): Observable<WeatherResponseEntity>
 }
