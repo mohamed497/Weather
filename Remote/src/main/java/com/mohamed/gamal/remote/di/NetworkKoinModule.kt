@@ -3,7 +3,6 @@ package com.mohamed.gamal.remote.di
 import com.mohamed.gamal.data.repository.weather.WeatherRemote
 import com.mohamed.gamal.domain.repository.WeatherRepository
 import com.mohamed.gamal.remote.WeatherRemoteImpl
-import com.mohamed.gamal.remote.WeatherRemoteRepository
 import com.mohamed.gamal.remote.client.RetrofitClient
 import com.mohamed.gamal.remote.mappers.weather.WeatherModelMapper
 import com.mohamed.gamal.remote.mappers.weather.WeatherResponseModelMapper
@@ -25,7 +24,7 @@ val remoteModule = module {
     }
     factory { WeatherResponseModelMapper(get()) }
     factory { WeatherModelMapper() }
-    single<WeatherRepository> { WeatherRemoteRepository(weatherService = get()) }
+//    single<WeatherRepository> { WeatherRemoteRepository(weatherService = get()) }
 
     single<WeatherRemote> { WeatherRemoteImpl(weatherService = get(), weatherMapper = get()) }
 

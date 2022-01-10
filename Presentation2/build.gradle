@@ -42,15 +42,8 @@ dependencies {
     implementation supportDependencies.rxjavaAndroid
     implementation supportDependencies.rxjava
     implementation supportDependencies.rxKotlin
+    implementation supportDependencies.androidKoin
 
-//    implementation "io.insert-koin:koin-core:3.0.1"
-
-//    implementation supportDependencies.koinAndroid
-//    implementation supportDependencies.koinScope
-//    implementation supportDependencies.koinViewmodel
-//    implementation supportDependencies.koinExt
-
-    implementation "io.insert-koin:koin-android:3.1.5"
 
 
     implementation supportDependencies.coreKtx
@@ -60,5 +53,6 @@ dependencies {
     androidTestImplementation supportDependencies.testJunit
     androidTestImplementation supportDependencies.espressoCore
 
+//    implementation "io.insert-koin:koin-core:3.1.5"
 
 }

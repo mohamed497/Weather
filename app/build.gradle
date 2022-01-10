@@ -53,8 +53,9 @@ dependencies {
 //    implementation supportDependencies.koinScope
 //    implementation supportDependencies.koinViewmodel
 //    implementation supportDependencies.koinExt
+    implementation supportDependencies.androidKoin
 
-    implementation "io.insert-koin:koin-android:3.1.5"
+//    implementation "io.insert-koin:koin-android:3.1.5"
 
     implementation supportDependencies.retrofit
     implementation supportDependencies.retrofitAdapter
@@ -64,9 +65,7 @@ dependencies {
     implementation supportDependencies.rxjava
     implementation supportDependencies.rxKotlin
 
-    implementation supportDependencies.cardview
-    implementation supportDependencies.glide
-    implementation supportDependencies.glideCompiler
+
 
 
 }

@@ -1,5 +1,6 @@
 package com.mohamed.gamal.remote
 
+import com.mohamed.gamal.data.models.weather.WeatherResponseEntity
 import com.mohamed.gamal.data.repository.weather.WeatherRemote
 import com.mohamed.gamal.remote.service.WeatherApiService
 import com.mohamed.gamal.domain.models.WeatherResponse
@@ -10,8 +11,12 @@ class WeatherRemoteImpl(
     private val weatherService: WeatherApiService,
     private val weatherMapper: WeatherResponseModelMapper
 ) : WeatherRemote {
-    override fun getWeather(): Observable<WeatherResponse> {
+//    override fun getWeather(): Observable<WeatherResponse> {
+//        return weatherService.getWeather()
+////            .map(weatherMapper::mapFromModel)
+//    }
+    override fun getWeather(): Observable<WeatherResponseEntity> {
         return weatherService.getWeather()
-//            .map(weatherMapper::mapFromModel)
+            .map(weatherMapper::mapFromModel)
     }
 }

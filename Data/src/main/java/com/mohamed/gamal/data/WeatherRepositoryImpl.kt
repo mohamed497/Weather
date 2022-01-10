@@ -15,7 +15,7 @@ class WeatherRepositoryImpl(
 
     override fun getWeather(): Observable<WeatherResponse> {
         return weatherDataSourceFactory.getRemote().getWeather()
-//            .map(weatherMapper::mapToDomain)
+            .map(weatherMapper::mapToDomain)
     }
 
 }

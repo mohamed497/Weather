@@ -42,14 +42,7 @@ ext {
             rxjava           : "io.reactivex.rxjava3:rxjava:${libVersions.rxjava}",
             rxKotlin         : "io.reactivex.rxjava3:rxkotlin:${libVersions.rxjava}",
 
+            androidKoin      : "io.insert-koin:koin-android:${libVersions.koin}",
 
-            koinAndroid      : "io.insert-koin:koin-android:${libVersions.koin}",
-            koinScope        : "io.insert-koin:koin-android-scope:${libVersions.koin}",
-            koinViewmodel    : "io.insert-koin:koin-android-viewmodel:${libVersions.koin}",
-            koinExt          : "io.insert-koin:koin-android-ext:${libVersions.koin}",
-
-            cardview         : "androidx.cardview:cardview:${libVersions.cardview}",
-            glide            : "com.github.bumptech.glide:glide:${libVersions.glide}",
-            glideCompiler    : "com.github.bumptech.glide:compiler:${libVersions.glide}",
     ]
 }
