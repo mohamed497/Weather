@@ -12,7 +12,7 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val presentationModule = module {
-    viewModel { WeatherViewModel(getWeatherUseCase = get()) }
+    viewModel { WeatherViewModel(getWeatherUseCase = get(),weatherMapper = get()) }
     single<PostExecutionThread> { PostExecutionThreadImp() }
 
     factory { WeatherPresentationMapper() }
