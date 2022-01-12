@@ -9,8 +9,8 @@ import com.mohamed.gamal.domain.models.WeatherResponse
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
-import store.factory.WeatherFactory
 import org.junit.Assert
+import store.factory.WeatherEntityFactory
 
 @RunWith(JUnit4::class)
 class WeatherMapperTest {
@@ -20,7 +20,7 @@ class WeatherMapperTest {
 
     @Test
     fun mapFromWeatherEntityToDomain(){
-        val entity = WeatherFactory.makeWeatherEntity()
+        val entity = WeatherEntityFactory.makeWeatherEntity()
         val model = weatherMapper.mapToDomain(entity)
         assertEqualDataWeatherEntity(entity,model)
     }
@@ -33,7 +33,7 @@ class WeatherMapperTest {
     }
     @Test
     fun mapFromWeatherResponseEntityToDomain(){
-        val entity = WeatherFactory.makeWeatherResponseEntity()
+        val entity = WeatherEntityFactory.makeWeatherResponseEntity()
         val model = weatherResponseMapper.mapToDomain(entity)
         assertEqualDataWeatherResponseEntity(entity,model)
     }

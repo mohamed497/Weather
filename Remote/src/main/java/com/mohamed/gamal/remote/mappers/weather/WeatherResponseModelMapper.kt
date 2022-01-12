@@ -5,7 +5,7 @@ import com.mohamed.gamal.remote.mappers.ModelMapper
 import com.mohamed.gamal.remote.models.weather.WeatherResponseModel
 
 
-class WeatherResponseModelMapper(private val weatherMapper: WeatherModelMapper) :
+open class WeatherResponseModelMapper(private val weatherMapper: WeatherModelMapper) :
     ModelMapper<WeatherResponseModel, WeatherResponseEntity> {
     override fun mapFromModel(model: WeatherResponseModel?): WeatherResponseEntity {
         return WeatherResponseEntity(

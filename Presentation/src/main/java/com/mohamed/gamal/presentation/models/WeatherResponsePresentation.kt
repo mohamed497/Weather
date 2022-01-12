@@ -1,4 +1,4 @@
-package com.mohamed.gamal.presentation2.models
+package com.mohamed.gamal.presentation.models
 
 data class WeatherResponsePresentation(
     val base: String?,

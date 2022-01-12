@@ -3,7 +3,7 @@ package store.factory
 import com.mohamed.gamal.data.models.weather.WeatherEntity
 import com.mohamed.gamal.data.models.weather.WeatherResponseEntity
 
-object WeatherFactory {
+object WeatherEntityFactory {
     fun makeWeatherResponseEntity():WeatherResponseEntity{
         val weatherList = mutableListOf<WeatherEntity>()
         weatherList.add(0,WeatherEntity(1,"main","desc","icon"))

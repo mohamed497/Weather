@@ -9,7 +9,7 @@ import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
-import store.factory.WeatherFactory
+import store.factory.WeatherEntityFactory
 
 @RunWith(JUnit4::class)
 class WeatherRemoteDataStoreTest {
@@ -19,13 +19,13 @@ class WeatherRemoteDataStoreTest {
 
     @Test
     fun getWeatherCompletes(){
-        stubbingRemoteGetProjects(Observable.just(WeatherFactory.makeWeatherResponseEntity()))
+        stubbingRemoteGetProjects(Observable.just(WeatherEntityFactory.makeWeatherResponseEntity()))
         val testObserver = store.getWeather().test()
         testObserver.assertComplete()
     }
     @Test
     fun getWeatherReturnData(){
-        val response = WeatherFactory.makeWeatherResponseEntity()
+        val response = WeatherEntityFactory.makeWeatherResponseEntity()
         stubbingRemoteGetProjects(Observable.just(response))
         val testObserver = store.getWeather().test()
         testObserver.assertValue(response)

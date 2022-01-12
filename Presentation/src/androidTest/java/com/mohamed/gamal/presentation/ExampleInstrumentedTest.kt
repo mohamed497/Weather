@@ -1,4 +1,4 @@
-package com.mohamed.gamal.weather
+package com.mohamed.gamal.presentation
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.mohamed.gamal.weather", appContext.packageName)
+        assertEquals("com.mohamed.gamal.presentation2.test", appContext.packageName)
     }
 }

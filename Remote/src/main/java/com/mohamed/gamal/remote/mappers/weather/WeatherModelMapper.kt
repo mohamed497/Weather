@@ -4,7 +4,7 @@ import com.mohamed.gamal.data.models.weather.WeatherEntity
 import com.mohamed.gamal.remote.mappers.ModelMapper
 import com.mohamed.gamal.remote.models.weather.WeatherModel
 
-class WeatherModelMapper :
+open class WeatherModelMapper :
     ModelMapper<WeatherModel, WeatherEntity> {
     override fun mapFromModel(model: WeatherModel?): WeatherEntity {
         return WeatherEntity(

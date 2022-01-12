@@ -8,7 +8,7 @@ import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.schedulers.Schedulers
 
 
-class GetWeatherUseCase(
+open class GetWeatherUseCase(
     private val weatherRepository: WeatherRepository,
     schedulerThread: PostExecutionThread
 ) :

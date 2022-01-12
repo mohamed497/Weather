@@ -3,11 +3,11 @@ package com.mohamed.gamal.weather.view.ui.weather.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.mohamed.gamal.presentation2.base.Resource
-import com.mohamed.gamal.presentation2.viewmodel.WeatherViewModel
+import com.mohamed.gamal.presentation.base.Resource
+import com.mohamed.gamal.presentation.viewmodel.WeatherViewModel
 import com.mohamed.gamal.weather.R
 import com.mohamed.gamal.weather.view.utils.debug
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_weather.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class WeatherActivity : AppCompatActivity() {
@@ -16,7 +16,7 @@ class WeatherActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_weather)
 
         viewModel.getWeather()
         observeOnWeather()

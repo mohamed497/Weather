@@ -1,11 +1,11 @@
-package com.mohamed.gamal.presentation2.di
+package com.mohamed.gamal.presentation.di
 
 
 import com.mohamed.gamal.domain.executor.PostExecutionThread
-import com.mohamed.gamal.presentation2.PostExecutionThreadImp
-import com.mohamed.gamal.presentation2.mapper.weather.WeatherPresentationMapper
-import com.mohamed.gamal.presentation2.mapper.weather.WeatherResponsePresentationMapper
-import com.mohamed.gamal.presentation2.viewmodel.WeatherViewModel
+import com.mohamed.gamal.presentation.PostExecutionThreadImp
+import com.mohamed.gamal.presentation.mapper.weather.WeatherPresentationMapper
+import com.mohamed.gamal.presentation.mapper.weather.WeatherResponsePresentationMapper
+import com.mohamed.gamal.presentation.viewmodel.WeatherViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 
 

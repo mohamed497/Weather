@@ -1,4 +1,4 @@
-package com.mohamed.gamal.presentation2.mapper
+package com.mohamed.gamal.presentation.mapper
 
 interface PresentationMapper<D, V> {
     fun mapToPresentation(domain: D?): V

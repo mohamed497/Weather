@@ -46,8 +46,14 @@ dependencies {
     implementation supportDependencies.appCompat
     implementation supportDependencies.constraintLayout
     testImplementation supportDependencies.junit
+    androidTestImplementation supportDependencies.junit
     androidTestImplementation supportDependencies.testJunit
+    androidTestImplementation supportDependencies.supportRules
+    androidTestImplementation supportDependencies.supportRunner
     androidTestImplementation supportDependencies.espressoCore
+    androidTestImplementation supportDependencies.mockito
+    androidTestImplementation supportDependencies.assert
+    androidTestImplementation supportDependencies.koinTest
 
     implementation supportDependencies.androidKoin
 

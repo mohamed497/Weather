@@ -17,4 +17,6 @@ dependencies {
 
     testImplementation supportDependencies.junit
     testImplementation "org.assertj:assertj-core:3.8.0"
+    testImplementation "org.mockito.kotlin:mockito-kotlin:4.0.0"
+
 }

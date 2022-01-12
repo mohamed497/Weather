@@ -1,12 +1,11 @@
-package com.mohamed.gamal.presentation2.viewmodel
+package com.mohamed.gamal.presentation.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.*
-import com.mohamed.gamal.domain.models.WeatherResponse
 import com.mohamed.gamal.domain.usecases.weather.GetWeatherUseCase
-import com.mohamed.gamal.presentation2.base.Resource
-import com.mohamed.gamal.presentation2.mapper.weather.WeatherResponsePresentationMapper
-import com.mohamed.gamal.presentation2.models.WeatherResponsePresentation
+import com.mohamed.gamal.presentation.base.Resource
+import com.mohamed.gamal.presentation.mapper.weather.WeatherResponsePresentationMapper
+import com.mohamed.gamal.presentation.models.WeatherResponsePresentation
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.kotlin.subscribeBy
 
@@ -27,14 +26,14 @@ class WeatherViewModel(
 
 
     fun getWeather() {
-        weatherLiveData.value = Resource.loading()
+        weatherLiveData.postValue( Resource.loading())
         getWeatherUseCase.getObservable().subscribeBy(
             onNext = { weatherResponse ->
-                weatherLiveData.value =
-                    Resource.success(weatherMapper.mapToPresentation(weatherResponse))
+                weatherLiveData.postValue(
+                    Resource.success(weatherMapper.mapToPresentation(weatherResponse)))
             },
             onError = { throwable ->
-                weatherLiveData.value = Resource.error(throwable)
+                weatherLiveData.postValue( Resource.error(throwable))
             },
             onComplete = {
                 Log.d(

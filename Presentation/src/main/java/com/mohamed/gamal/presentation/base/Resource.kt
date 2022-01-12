@@ -1,4 +1,4 @@
-package com.mohamed.gamal.presentation2.base
+package com.mohamed.gamal.presentation.base
 
 
 class Resource<T>(

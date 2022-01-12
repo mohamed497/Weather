@@ -1,10 +1,10 @@
-package com.mohamed.gamal.presentation2.mapper.weather
+package com.mohamed.gamal.presentation.mapper.weather
 
 import com.mohamed.gamal.domain.models.WeatherResponse
-import com.mohamed.gamal.presentation2.mapper.PresentationMapper
-import com.mohamed.gamal.presentation2.models.WeatherResponsePresentation
+import com.mohamed.gamal.presentation.mapper.PresentationMapper
+import com.mohamed.gamal.presentation.models.WeatherResponsePresentation
 
-class WeatherResponsePresentationMapper(private val weatherMapper: WeatherPresentationMapper) :
+open class WeatherResponsePresentationMapper(private val weatherMapper: WeatherPresentationMapper) :
     PresentationMapper<WeatherResponse, WeatherResponsePresentation> {
     override fun mapToPresentation(domain: WeatherResponse?): WeatherResponsePresentation {
         return WeatherResponsePresentation(
