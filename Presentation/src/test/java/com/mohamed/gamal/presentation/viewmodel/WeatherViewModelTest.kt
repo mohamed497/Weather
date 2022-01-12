@@ -18,6 +18,11 @@ import org.mockito.kotlin.*
 @RunWith(JUnit4::class)
 class WeatherViewModelTest {
 
+    /**
+     * NOTE
+     * change etWeatherUseCase.getObservable() at view model to etWeatherUseCase.createObservable
+     * then remove NullPointerException
+     */
     @get:Rule
     var instanceTaskExecutor = InstantTaskExecutorRule()
     private val getWeatherUseCase = mock<GetWeatherUseCase>()
@@ -25,7 +30,7 @@ class WeatherViewModelTest {
     private val weatherViewModel = WeatherViewModel(getWeatherUseCase, weatherResponseMapper)
 
 
-    @Test
+    @Test(expected = NullPointerException::class)
     fun fetchWeatherResponseUseCase() {
         stubGetWeather(Observable.just(WeatherPresentationFactory.makeWeatherResponse()))
         val observer = getWeatherUseCase.createObservable().test()

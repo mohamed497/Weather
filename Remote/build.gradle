@@ -16,9 +16,8 @@ dependencies {
     implementation supportDependencies.retrofit
     implementation supportDependencies.retrofitAdapter
     implementation supportDependencies.retrofitConverter
-
-    implementation "io.insert-koin:koin-core:3.1.5"
+    implementation supportDependencies.koin
     testImplementation supportDependencies.junit
-    testImplementation "org.assertj:assertj-core:3.8.0"
-    testImplementation "org.mockito.kotlin:mockito-kotlin:4.0.0"
+    testImplementation supportDependencies.mockito
+    testImplementation supportDependencies.assert
 }

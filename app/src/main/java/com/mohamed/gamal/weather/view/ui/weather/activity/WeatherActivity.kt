@@ -26,16 +26,22 @@ class WeatherActivity : AppCompatActivity() {
         viewModel.observeOnWeather(this, { weatherResource ->
             when (weatherResource.state) {
                 Resource.Companion.State.LOADING -> {
+                    city.visibility = View.GONE
+                    desc.visibility = View.GONE
                     progress.visibility = View.VISIBLE
                     errorText.visibility = View.GONE
                 }
                 Resource.Companion.State.SUCCESS -> {
                     progress.visibility = View.GONE
                     errorText.visibility = View.GONE
+                    city.visibility = View.VISIBLE
+                    desc.visibility = View.VISIBLE
                     cityName.text = weatherResource.value?.name
                     weatherDesc.text = weatherResource.value?.weather?.get(0)?.description
                 }
                 Resource.Companion.State.ERROR -> {
+                    city.visibility = View.GONE
+                    desc.visibility = View.GONE
                     progress.visibility = View.GONE
                     errorText.visibility = View.VISIBLE
                     debug(weatherResource.t.toString())

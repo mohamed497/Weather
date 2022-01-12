@@ -16,7 +16,5 @@ object WeatherPresentationFactory {
         weatherList.add(0, Weather(1,"main","desc","icon"))
         return WeatherResponse("test","test",1,weatherList)
     }
-    fun makeWeatherModel(): Weather {
-        return Weather(1,"main","desc","icon")
-    }
+
 }

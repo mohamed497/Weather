@@ -44,20 +44,16 @@ dependencies {
     implementation supportDependencies.rxKotlin
     implementation supportDependencies.androidKoin
 
-
-
     implementation supportDependencies.coreKtx
     implementation supportDependencies.material
     implementation supportDependencies.appCompat
     testImplementation supportDependencies.junit
     androidTestImplementation supportDependencies.testJunit
     androidTestImplementation supportDependencies.espressoCore
-
     testImplementation supportDependencies.junit
-    testImplementation "org.assertj:assertj-core:3.8.0"
-    testImplementation "org.mockito.kotlin:mockito-kotlin:4.0.0"
-
-    testImplementation 'androidx.arch.core:core-testing:2.1.0'
+    testImplementation supportDependencies.mockito
+    testImplementation supportDependencies.assert
+    testImplementation supportDependencies.archTest
 
 
 

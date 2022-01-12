@@ -3,6 +3,7 @@ package com.mohamed.gamal.presentation.viewmodel
 import android.util.Log
 import androidx.lifecycle.*
 import com.mohamed.gamal.domain.usecases.weather.GetWeatherUseCase
+import com.mohamed.gamal.presentation.base.BaseViewModel
 import com.mohamed.gamal.presentation.base.Resource
 import com.mohamed.gamal.presentation.mapper.weather.WeatherResponsePresentationMapper
 import com.mohamed.gamal.presentation.models.WeatherResponsePresentation
@@ -12,10 +13,8 @@ import io.reactivex.rxjava3.kotlin.subscribeBy
 class WeatherViewModel(
     private val getWeatherUseCase: GetWeatherUseCase,
     private val weatherMapper: WeatherResponsePresentationMapper
-) : ViewModel() {
-    private val compositeDisposable = CompositeDisposable()
+) : BaseViewModel() {
     private val weatherLiveData = MutableLiveData<Resource<WeatherResponsePresentation>>()
-
 
     fun observeOnWeather(
         lifecycle: LifecycleOwner,
@@ -26,14 +25,15 @@ class WeatherViewModel(
 
 
     fun getWeather() {
-        weatherLiveData.postValue( Resource.loading())
+        weatherLiveData.postValue(Resource.loading())
         getWeatherUseCase.getObservable().subscribeBy(
             onNext = { weatherResponse ->
                 weatherLiveData.postValue(
-                    Resource.success(weatherMapper.mapToPresentation(weatherResponse)))
+                    Resource.success(weatherMapper.mapToPresentation(weatherResponse))
+                )
             },
             onError = { throwable ->
-                weatherLiveData.postValue( Resource.error(throwable))
+                weatherLiveData.postValue(Resource.error(throwable))
             },
             onComplete = {
                 Log.d(
@@ -44,8 +44,4 @@ class WeatherViewModel(
         )
     }
 
-    override fun onCleared() {
-        compositeDisposable.clear()
-        super.onCleared()
-    }
 }

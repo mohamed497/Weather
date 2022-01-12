@@ -16,6 +16,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+//        testInstrumentationRunner "com.mohamed.gamal.weather.KoinTestRunner"
     }
 
     buildTypes {
@@ -53,14 +54,12 @@ dependencies {
     androidTestImplementation supportDependencies.espressoCore
     androidTestImplementation supportDependencies.mockito
     androidTestImplementation supportDependencies.assert
-    androidTestImplementation supportDependencies.koinTest
-
+    testImplementation supportDependencies.mockito
+    testImplementation supportDependencies.assert
     implementation supportDependencies.androidKoin
-
     implementation supportDependencies.retrofit
     implementation supportDependencies.retrofitAdapter
     implementation supportDependencies.retrofitConverter
-
     implementation supportDependencies.rxjavaAndroid
     implementation supportDependencies.rxjava
     implementation supportDependencies.rxKotlin
