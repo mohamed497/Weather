@@ -3,7 +3,7 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="1.7">
       <module name="Weather.app" target="11" />
-      <module name="Weather.Presentation2" target="11" />
+      <module name="Weather.Presentation" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

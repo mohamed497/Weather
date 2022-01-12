@@ -9,7 +9,6 @@ abstract class BaseObservableUseCase<T, P>(private val schedulerThread: PostExec
     fun getObservable(params: P? = null): Observable<T> =
         createObservable(params = params)
             .subscribeOn(Schedulers.io())
-//            .observeOn(AndroidSchedulers.mainThread())
             .observeOn(schedulerThread.scheduler)
 
     abstract fun createObservable(params: P? = null): Observable<T>

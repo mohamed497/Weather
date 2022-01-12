@@ -5,7 +5,7 @@ import com.mohamed.gamal.data.models.weather.WeatherResponseEntity
 import com.mohamed.gamal.domain.models.WeatherResponse
 
 
-class WeatherResponseEntityMapper(private val weatherMapper: WeatherEntityMapper) :
+open class WeatherResponseEntityMapper(private val weatherMapper: WeatherEntityMapper) :
     EntityMapper<WeatherResponseEntity, WeatherResponse> {
     override fun mapToDomain(entity: WeatherResponseEntity?): WeatherResponse {
         return WeatherResponse(

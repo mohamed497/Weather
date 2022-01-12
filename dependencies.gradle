@@ -10,7 +10,6 @@ ext {
             material         : '1.4.0',
             junit            : '4.+',
             cardview         : '1.0.0',
-//            koin             : '2.0.1',
             koin             : '3.1.5',
             androidx         : [
                     coreKtx         : '1.7.0',
@@ -29,11 +28,6 @@ ext {
             testJunit        : "androidx.test.ext:junit:${libVersions.androidx.testJunit}",
             espressoCore     : "androidx.test.espresso:espresso-core:${libVersions.androidx.espressoCore}",
 
-            roomRuntime      : "androidx.room:room-runtime:${libVersions.room}",
-            roomCompiler     : "androidx.room:room-compiler:${libVersions.room}",
-            roomKapt         : "androidx.room:room-compiler:${libVersions.room}",
-            roomKtx          : "androidx.room:room-rxjava3:${libVersions.room}",
-
             retrofit         : "com.squareup.retrofit2:retrofit:${libVersions.retrofit}",
             retrofitAdapter  : "com.squareup.retrofit2:adapter-rxjava3:${libVersions.retrofit}",
             retrofitConverter: "com.squareup.retrofit2:converter-gson:${libVersions.retrofit}",
@@ -45,4 +39,5 @@ ext {
             androidKoin      : "io.insert-koin:koin-android:${libVersions.koin}",
 
     ]
+
 }
