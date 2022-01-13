@@ -5,8 +5,10 @@ import com.mohamed.gamal.data.mappers.weather.WeatherResponseEntityMapper
 import com.mohamed.gamal.data.models.weather.WeatherResponseEntity
 import com.mohamed.gamal.data.repository.weather.WeatherDataStore
 import com.mohamed.gamal.data.store.weather.WeatherDataSourceFactory
+import com.mohamed.gamal.data.store.weather.WeatherRemoteDataStore
 import com.mohamed.gamal.domain.models.WeatherResponse
 import io.reactivex.rxjava3.core.Observable
+import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
@@ -19,20 +21,18 @@ import store.factory.WeatherEntityFactory
 class WeatherRepositoryImplTest {
     private val mapper = mock<WeatherResponseEntityMapper>()
     private val store = mock<WeatherDataStore>()
-//    private val storeRemote = mock<WeatherRemoteDataStore>()
     private val factory = mock<WeatherDataSourceFactory>()
     private val repository = WeatherRepositoryImpl(factory,mapper)
 
-//    @Before
-//    fun setup(){
-//        stubWeatherGetDataStore()
-//    }
+    @Before
+    fun setup(){
+        stubFactoryGetDataStore()
+    }
 
     @Test
     fun getWeatherComplete(){
-        stubWeatherGetDataStore()
         stubGetWeather(Observable.just(WeatherEntityFactory.makeWeatherResponseEntity()))
-        stubMapper(WeatherEntityFactory.makeWeatherResponseEntity(), any())
+        stubMapper(WeatherEntityFactory.makeWeatherResponseEntity(), WeatherEntityFactory.makeWeatherResponse())
         val observer = repository.getWeather().test()
         observer.assertComplete()
     }
@@ -40,7 +40,7 @@ class WeatherRepositoryImplTest {
         whenever(mapper.mapToDomain(entity))
             .thenReturn(model)
     }
-    private fun stubWeatherGetDataStore(){
+    private fun stubFactoryGetDataStore(){
         whenever(factory.getRemote())
             .thenReturn(store)
     }
