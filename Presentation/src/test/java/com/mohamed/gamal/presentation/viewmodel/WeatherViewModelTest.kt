@@ -13,8 +13,11 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.mohamed.gamal.domain.models.WeatherResponse
 import com.mohamed.gamal.presentation.factory.WeatherPresentationFactory
 import io.reactivex.rxjava3.core.Observable
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runTest
 import org.mockito.kotlin.*
 
+@ExperimentalCoroutinesApi
 @RunWith(JUnit4::class)
 class WeatherViewModelTest {
 
@@ -32,17 +35,21 @@ class WeatherViewModelTest {
 
     @Test(expected = NullPointerException::class)
     fun fetchWeatherResponseUseCase() {
-        stubGetWeather(Observable.just(WeatherPresentationFactory.makeWeatherResponse()))
-        val observer = getWeatherUseCase.createObservable().test()
-        observer.assertComplete()
-        weatherViewModel.getWeather()
-        verify(getWeatherUseCase, times(1))
+        runTest {
+
+            stubGetWeather(WeatherPresentationFactory.makeWeatherResponse())
+            weatherViewModel.getWeather()
+            verify(getWeatherUseCase, times(1))
+        }
 
     }
 
-    private fun stubGetWeather(observable: Observable<WeatherResponse>) {
-        whenever(getWeatherUseCase.createObservable())
-            .thenReturn(observable)
+    private fun stubGetWeather(weatherResponse: WeatherResponse) {
+        runTest {
+            whenever(getWeatherUseCase.createWeatherResponse())
+                .thenReturn(weatherResponse)
+        }
+
     }
 
 }

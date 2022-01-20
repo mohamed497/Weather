@@ -7,8 +7,9 @@ import com.mohamed.gamal.presentation.base.BaseViewModel
 import com.mohamed.gamal.presentation.base.Resource
 import com.mohamed.gamal.presentation.mapper.weather.WeatherResponsePresentationMapper
 import com.mohamed.gamal.presentation.models.WeatherResponsePresentation
-import io.reactivex.rxjava3.disposables.CompositeDisposable
-import io.reactivex.rxjava3.kotlin.subscribeBy
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class WeatherViewModel(
     private val getWeatherUseCase: GetWeatherUseCase,
@@ -23,25 +24,22 @@ class WeatherViewModel(
         weatherLiveData.observe(lifecycle, weather)
     }
 
-
     fun getWeather() {
-        weatherLiveData.postValue(Resource.loading())
-        getWeatherUseCase.getObservable().subscribeBy(
-            onNext = { weatherResponse ->
-                weatherLiveData.postValue(
-                    Resource.success(weatherMapper.mapToPresentation(weatherResponse))
-                )
-            },
-            onError = { throwable ->
-                weatherLiveData.postValue(Resource.error(throwable))
-            },
-            onComplete = {
-                Log.d(
-                    WeatherViewModel::class.java.simpleName,
-                    "Fetch Data Completed"
-                )
+        super.uiScope.launch {
+            try {
+                weatherLiveData.postValue(Resource.loading())
+                withContext(Dispatchers.IO) {
+                    weatherLiveData.postValue(
+                        Resource.success(
+                            getWeatherUseCase.createWeatherResponse()
+                                .run(weatherMapper::mapToPresentation)
+                        )
+                    )
+                }
+            } catch (t: Throwable) {
+                weatherLiveData.postValue(Resource.error(t))
             }
-        )
-    }
 
+        }
+    }
 }

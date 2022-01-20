@@ -7,44 +7,50 @@ import com.mohamed.gamal.remote.models.weather.WeatherResponseModel
 import com.mohamed.gamal.remote.service.WeatherApiService
 import factory.WeatherModelFactory
 import io.reactivex.rxjava3.core.Observable
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runTest
+import org.junit.Assert
 import org.junit.Test
 import org.mockito.kotlin.any
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
 
+@ExperimentalCoroutinesApi
 class WeatherRemoteImplTest {
     private val weatherService = mock<WeatherApiService>()
     private val weatherMapper = mock<WeatherResponseModelMapper>()
     private val weatherRemoteImpl = WeatherRemoteImpl(weatherService, weatherMapper)
 
     @Test
-    fun getWeatherComplete() {
-        stubWeatherService(Observable.just(WeatherModelFactory.makeWeatherResponseModel()))
-        stubWeatherResponseMapper(any(),WeatherModelFactory.makeWeatherResponseEntity())
-        val observer = weatherRemoteImpl.getWeather().test()
-        observer.assertComplete()
-    }
-    @Test
     fun getWeatherResponseReturnData() {
-        val response = WeatherModelFactory.makeWeatherResponseModel()
-        stubWeatherService(Observable.just(response))
-        stubWeatherResponseMapper(any(),WeatherModelFactory.makeWeatherResponseEntity())
-        val observer = weatherRemoteImpl.getWeather().test()
-        observer.assertValue(WeatherModelFactory.makeWeatherResponseEntity())
+        runTest {
+            val response = WeatherModelFactory.makeWeatherResponseEntity()
+            stubWeatherService(WeatherModelFactory.makeWeatherResponseModel())
+            stubWeatherResponseMapper(any(), WeatherModelFactory.makeWeatherResponseEntity())
+            val weatherResponse = weatherRemoteImpl.getWeather()
+            Assert.assertEquals(response, weatherResponse)
+        }
+
     }
 
     @Test
     fun getWeatherCallServer() {
-        stubWeatherService(Observable.just(WeatherModelFactory.makeWeatherResponseModel()))
-        stubWeatherResponseMapper(any(),WeatherModelFactory.makeWeatherResponseEntity())
-        weatherRemoteImpl.getWeather().test()
-        verify(weatherService).getWeather()
+        runTest {
+            stubWeatherService(WeatherModelFactory.makeWeatherResponseModel())
+            stubWeatherResponseMapper(any(), WeatherModelFactory.makeWeatherResponseEntity())
+            weatherRemoteImpl.getWeather()
+            verify(weatherService).getWeather()
+        }
+
     }
 
-    private fun stubWeatherService(observable: Observable<WeatherResponseModel>) {
-        whenever(weatherService.getWeather())
-            .thenReturn(observable)
+    private fun stubWeatherService(weatherResponseModel: WeatherResponseModel) {
+        runTest {
+            whenever(weatherService.getWeather())
+                .thenReturn(weatherResponseModel)
+        }
+
     }
 
     private fun stubWeatherResponseMapper(

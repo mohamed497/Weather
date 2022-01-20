@@ -40,9 +40,7 @@ class WeatherActivityTest {
 //        val weatherResponsePresentationMapper = mock<WeatherResponsePresentationMapper>()
 ////        val loginApi = InMemoryLoginApi()
 ////        val loginRepository = RemoteLoginRepository(loginApi)
-        viewModel {
-            mock<WeatherViewModel>()
-        }
+        viewModel { WeatherViewModel(getWeatherUseCase = get(),weatherMapper = get()) }
     }
 
     @Before

@@ -5,5 +5,5 @@ import org.koin.dsl.module
 
 val domainModule = module {
 
-    factory { GetWeatherUseCase(get(), get()) }
+    factory { GetWeatherUseCase(get()) }
 }

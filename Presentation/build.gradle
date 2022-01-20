@@ -39,9 +39,7 @@ dependencies {
     implementation project(':Data')
     implementation project(':Remote')
 
-    implementation supportDependencies.rxjavaAndroid
-    implementation supportDependencies.rxjava
-    implementation supportDependencies.rxKotlin
+
     implementation supportDependencies.androidKoin
 
     implementation supportDependencies.coreKtx
@@ -55,6 +53,8 @@ dependencies {
     testImplementation supportDependencies.assert
     testImplementation supportDependencies.archTest
 
-
+    testImplementation supportDependencies.coroutineTest
+    implementation supportDependencies.coroutineCore
+    implementation supportDependencies.coroutineAndroid
 
 }

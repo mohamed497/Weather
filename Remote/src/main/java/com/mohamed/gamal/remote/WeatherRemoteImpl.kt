@@ -11,8 +11,9 @@ class WeatherRemoteImpl(
     private val weatherService: WeatherApiService,
     private val weatherMapper: WeatherResponseModelMapper
 ) : WeatherRemote {
-    override fun getWeather(): Observable<WeatherResponseEntity> {
+    override suspend fun getWeather(): WeatherResponseEntity {
         return weatherService.getWeather()
-            .map(weatherMapper::mapFromModel)
+            .run(weatherMapper::mapFromModel)
     }
+
 }

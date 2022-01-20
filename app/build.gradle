@@ -60,8 +60,6 @@ dependencies {
     implementation supportDependencies.retrofit
     implementation supportDependencies.retrofitAdapter
     implementation supportDependencies.retrofitConverter
-    implementation supportDependencies.rxjavaAndroid
-    implementation supportDependencies.rxjava
-    implementation supportDependencies.rxKotlin
+
 
 }

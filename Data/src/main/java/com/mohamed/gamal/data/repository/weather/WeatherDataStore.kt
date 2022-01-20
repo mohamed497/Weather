@@ -5,5 +5,5 @@ import com.mohamed.gamal.domain.models.WeatherResponse
 import io.reactivex.rxjava3.core.Observable
 
 interface WeatherDataStore {
-    fun getWeather(): Observable<WeatherResponseEntity>
+    suspend fun getWeather(): WeatherResponseEntity
 }

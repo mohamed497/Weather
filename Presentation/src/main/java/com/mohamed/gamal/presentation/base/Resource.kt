@@ -1,6 +1,5 @@
 package com.mohamed.gamal.presentation.base
 
-
 class Resource<T>(
     val value: T? = null,
     val t: Throwable? = null,

@@ -9,12 +9,13 @@ java {
 }
 dependencies {
 
-    implementation supportDependencies.rxjavaAndroid
-    implementation supportDependencies.rxjava
-    implementation supportDependencies.rxKotlin
+
     implementation supportDependencies.koin
     testImplementation supportDependencies.junit
     testImplementation supportDependencies.mockito
     testImplementation supportDependencies.assert
+
+    testImplementation supportDependencies.coroutineTest
+
 
 }
